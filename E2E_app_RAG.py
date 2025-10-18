@@ -54,7 +54,7 @@ def main():
     uploaded_file = st.file_uploader("Upload a document (text format)", type=["txt"])
     
     if uploaded_file is not None:
-        st.info("📂 Processing document...")
+        st.info("Processing document...")
         
         # Read file content
         file_content = StringIO(uploaded_file.getvalue().decode("utf-8")).read()
@@ -77,17 +77,18 @@ def main():
             st.error("Failed to initialize RAG system.")
             return
 
-        st.success("✅ Document processed successfully. RAG system is ready.")
+        st.success("Document processed successfully. RAG system is ready.")
 
         # Query input
-        query = st.text_input("🔍 Ask a question about the document:")
+        query = st.text_input("Ask a question about the document:")
         if query:
-            with st.spinner("⏳ Retrieving and generating response..."):
+            with st.spinner("Retrieving and generating response..."):
                 try:
                     answer = rag_chain.run(query)
-                    st.markdown(f"**📝 Answer:** {answer}")
+                    st.markdown(f"**Answer:** {answer}")
                 except Exception as e:
                     st.error(f"Error generating response: {e}")
 
 if __name__ == "__main__":
     main()
+
